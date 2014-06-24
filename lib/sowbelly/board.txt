@@ -18,3 +18,5 @@ e.g black moves 5 from 12
 new pose = 12+(BLACK*5) = 12+(-1*5) = 7
 count at 12 = -5-BLACK = -5+1 = -4
 count at 7  = -3+BLACK = -3-1 = -4
+
+[2,0,0,0,0,-5,0,-3,0,0,0,5,-5,0,0,0,3,0,5,0,0,0,0,-2]
