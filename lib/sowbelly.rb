@@ -1,4 +1,5 @@
 require "sowbelly/version"
+require "sowbelly/constants"
 require "sowbelly/board"
 
 module Sowbelly
