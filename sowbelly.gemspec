@@ -6,10 +6,10 @@ require 'sowbelly/version'
 Gem::Specification.new do |spec|
   spec.name          = "sowbelly"
   spec.version       = Sowbelly::VERSION
-  spec.authors       = ["TODO: Write your name"]
-  spec.email         = ["TODO: Write your email address"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.authors       = ["Stuart"]
+  spec.email         = ["stu.zart@gmail.com"]
+  spec.summary       = %q{Simple representation of backgammon board and game state.}
+  spec.description   = %q{}
   spec.homepage      = ""
   spec.license       = "GPL v3"
 
