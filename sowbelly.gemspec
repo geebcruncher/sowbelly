@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
   spec.add_development_dependency "coveralls"
   spec.add_development_dependency "rubocop"
+  spec.add_development_dependency "reek"
   
   spec.add_dependency "dicebag","~> 3.1"
 end
