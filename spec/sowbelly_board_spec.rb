@@ -20,6 +20,12 @@ describe Sowbelly::Board do
       expect(@board.state[:pieces]).to eq([2,0,0,0,0,-5,0,-3,0,0,0,5,-5,0,0,0,3,0,5,0,0,0,0,-2])
     end
     
+    it "should not be possible to change state" do
+      state = @board.state
+      expect{state[:pieces]=[]}.to raise_error(RuntimeError,"can't modify frozen Hash")
+      expect{state[:fred]="fred"}.to raise_error(RuntimeError,"can't modify frozen Hash")
+    end
+    
     
   
 end

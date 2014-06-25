@@ -7,7 +7,7 @@ module Sowbelly
     
     
     def state
-      {:pieces=>@pieces.freeze}
+      {:pieces=>@pieces.freeze}.freeze
     end
     
     private
