@@ -13,5 +13,13 @@ describe Sowbelly::Board do
     expect(pieces.length).to be 24
       expect(pieces).to eq([2,0,0,0,0,-5,0,-3,0,0,0,5,-5,0,0,0,3,0,5,0,0,0,0,-2])
   end
+    
+    it "should not be possible to change pieces" do
+      pieces = @board.state[:pieces]
+      expect{pieces[1]=5}.to raise_error(RuntimeError,"can't modify frozen Array")
+      expect(@board.state[:pieces]).to eq([2,0,0,0,0,-5,0,-3,0,0,0,5,-5,0,0,0,3,0,5,0,0,0,0,-2])
+    end
+    
+    
   
 end
