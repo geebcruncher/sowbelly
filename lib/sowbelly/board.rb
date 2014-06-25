@@ -2,10 +2,11 @@ module Sowbelly
   class Board
     def initialize
       @pieces = Array.new(Sowbelly::Constants::START_PIECE_STATE)
+      @bar = { Sowbelly::Constants::BLACK => 0, Sowbelly::Constants::WHITE => 0 }
     end
 
     def state
-      { pieces: Array.new(@pieces) }.freeze
+      { pieces: Array.new(@pieces), bar: @bar.clone }.freeze
     end
 
     def move!(start, n, colour)

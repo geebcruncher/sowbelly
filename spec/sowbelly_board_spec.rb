@@ -7,11 +7,9 @@ describe Sowbelly::Board do
   
   it "has initial state" do
     state = @board.state
-    expect(state.class).to be Hash
-    pieces = state[:pieces]      
-    expect(pieces).to_not be nil
-    expect(pieces.length).to be 24
-      expect(pieces).to eq([2,0,0,0,0,-5,0,-3,0,0,0,5,-5,0,0,0,3,0,5,0,0,0,0,-2])
+    expect(state.class).to be Hash    
+    expect(state[:pieces]).to eq([2,0,0,0,0,-5,0,-3,0,0,0,5,-5,0,0,0,3,0,5,0,0,0,0,-2])
+      expect(state[:bar]).to eq({-1=>0,1=>0})
   end
     
     it "prevents pieces being interferred with" do
@@ -19,6 +17,12 @@ describe Sowbelly::Board do
       pieces[1]=5
       expect(@board.state[:pieces]).to eq([2,0,0,0,0,-5,0,-3,0,0,0,5,-5,0,0,0,3,0,5,0,0,0,0,-2])
     end
+    
+    it "prevents bar being interferred with" do
+      bar = @board.state[:bar]
+      bar[-1]=5
+      expect(@board.state[:bar]).to eq({-1=>0,1=>0})
+    end    
     
     it "prevents the state hash interferred with" do
       state = @board.state
