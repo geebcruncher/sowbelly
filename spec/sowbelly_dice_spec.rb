@@ -18,7 +18,22 @@ describe Sowbelly::Dice do
       end
     end
     
+    it "changes" do
+      dice = Sowbelly::Dice.new
+      not_one = false
+      is_one = false
+      random_test_times do
+        not_one = not_one | dice.val[0]!=1 
+        is_one = is_one | dice.val[0]==1 
+      end
+        
+      expect(not_one).to be true
+      expect(is_one).to be true
+      
+    end
+    
     def random_test_times
+      #TODO: change to a block
       1000
     end
   
