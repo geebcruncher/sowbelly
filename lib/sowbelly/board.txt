@@ -1,0 +1,22 @@
+BLACK == -1
+WHITE == 1
+
+
+WHITEHOME         BLACK-->
+23 22 21 20 19 18 | 17 16 15 14 13 12
+-2             5       3           -5
+
+2             -5      -3            5
+0  1  2  3  4  5  | 6  7  8  9  10 11
+BLACKHOME         WHITE-->
+
+BLACK moves -1 * spaces, or BLACK*n, count at start becomes x-BLACK, end becomes x+BLACK
+WHITE moves  1 * spaces, or WHITE*n, count at start becomes x-WHITE, end becomes x+WHITE
+
+e.g black moves 5 from 12
+
+new pose = 12+(BLACK*5) = 12+(-1*5) = 7
+count at 12 = -5-BLACK = -5+1 = -4
+count at 7  = -3+BLACK = -3-1 = -4
+
+[2,0,0,0,0,-5,0,-3,0,0,0,5,-5,0,0,0,3,0,5,0,0,0,0,-2]
