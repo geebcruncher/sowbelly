@@ -44,6 +44,15 @@ describe Sowbelly::Board do
       expect(pieces).to eq([1,0,0,1,0,-5,0,-3,0,0,0,5,-5,0,0,0,3,0,5,0,0,0,0,-2])
     end
     
+    it "will knock off black piece" do
+      @board.move!(23,2,Sowbelly::Constants::BLACK)
+      expect(@board.state[:pieces]).to eq([2,0,0,0,0,-5,0,-3,0,0,0,5,-5,0,0,0,3,0,5,0,0,-1,0,-1])
+      @board.move!(18,3,Sowbelly::Constants::WHITE)
+      expect(@board.state[:pieces]).to eq([2,0,0,0,0,-5,0,-3,0,0,0,5,-5,0,0,0,3,0,4,0,0,0,0,-1])
+      expect(@board.state[:bar]).to eq({Sowbelly::Constants::BLACK=>1,Sowbelly::Constants::WHITE=>0})
+    end
+      
+    
     
   
 end
