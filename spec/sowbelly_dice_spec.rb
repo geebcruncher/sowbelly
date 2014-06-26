@@ -34,7 +34,7 @@ describe Sowbelly::Dice do
     
     def random_test_times
       #TODO: change to a block
-      1000
+      50
     end
   
 end
