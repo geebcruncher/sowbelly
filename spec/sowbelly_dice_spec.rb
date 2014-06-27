@@ -9,7 +9,7 @@ describe Sowbelly::Dice do
   # TODO: look for gem/code that tests for randomness
   it 'within range' do
     dice = Sowbelly::Dice.new
-    random_test_times.times do |_index|
+    repeat_multiple_times do
       expect(dice.val[0]).to be >= 1
       expect(dice.val[0]).to be <= 6
       expect(dice.val[1]).to be >= 1
@@ -23,12 +23,12 @@ describe Sowbelly::Dice do
     is_one = false
     not_one_1 = false
     is_one_1 = false
-    random_test_times.times do
+    repeat_multiple_times do
       dice.roll
-      not_one = not_one || dice.val[0] != 1
-      is_one = is_one || dice.val[0] == 1
-      not_one_1 = not_one_1 || dice.val[1] != 1
-      is_one_1 = is_one_1 || dice.val[1] == 1
+      not_one ||= dice.val[0] != 1
+      is_one ||= dice.val[0] == 1
+      not_one_1 ||= dice.val[1] != 1
+      is_one_1 ||= dice.val[1] == 1
     end
     expect(not_one).to be true
     expect(is_one).to be true
@@ -40,16 +40,15 @@ describe Sowbelly::Dice do
   it 'does not change between rolls' do
     dice = Sowbelly::Dice.new
     current_val = dice.val
-    random_test_times.times do
+    repeat_multiple_times do
       expect(current_val).to eq(dice.val)
     end
   end
 
   it 'cannot be tampered with' do
     dice = Sowbelly::Dice.new
-    until dice.val[0] != 1 && dice.val[1] != 1
-      dice.rol l
-  end
+    dice.roll while dice.val[0] == 1 || dice.val[1] == 1
+
     expect(dice.val[0]).to_not be 1
     expect(dice.val[1]).to_not be 1
     dice.val[0] = 1
@@ -58,9 +57,10 @@ describe Sowbelly::Dice do
     expect(dice.val[1]).to_not be 1
   end
 
-  def random_test_times
-    # TODO: change to a block
-    50
+  def repeat_multiple_times
+    100.times do
+      yield
+    end
   end
 
 end
