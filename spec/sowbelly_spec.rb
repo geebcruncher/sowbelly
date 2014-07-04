@@ -5,5 +5,4 @@ describe Sowbelly do
     expect(Sowbelly::VERSION).not_to be nil
   end
 
-  
 end

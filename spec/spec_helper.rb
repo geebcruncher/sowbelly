@@ -1,5 +1,5 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'coveralls' 
+require 'coveralls'
 Coveralls.wear!
 
 require 'sowbelly'
