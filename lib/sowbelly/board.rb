@@ -3,6 +3,16 @@ module Sowbelly
     def initialize
       @pieces = Array.new(Sowbelly::Constants::START_PIECE_STATE)
       @bar = { Sowbelly::Constants::BLACK => 0, Sowbelly::Constants::WHITE => 0 }
+      snapshot
+    end
+    
+    def snapshot
+      @snapshot = state.clone
+    end
+    
+    def rollback
+      @pieces = @snapshot[:pieces]
+      @bar = @snapshot[:bar]
     end
 
     def state

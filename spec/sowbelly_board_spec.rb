@@ -5,10 +5,14 @@ describe Sowbelly::Board do
     @board = described_class.new
   end
   
+  def initial_state
+    [2,0,0,0,0,-5,0,-3,0,0,0,5,-5,0,0,0,3,0,5,0,0,0,0,-2]
+  end
+  
   it "has initial state" do
     state = @board.state
     expect(state.class).to be Hash    
-    expect(state[:pieces]).to eq([2,0,0,0,0,-5,0,-3,0,0,0,5,-5,0,0,0,3,0,5,0,0,0,0,-2])
+      expect(state[:pieces]).to eq(initial_state)
       expect(state[:bar]).to eq({-1=>0,1=>0})
   end
     
@@ -52,6 +56,13 @@ describe Sowbelly::Board do
       expect(@board.state[:bar]).to eq({Sowbelly::Constants::BLACK=>1,Sowbelly::Constants::WHITE=>0})
     end
       
+    it "handles snapshot and rollback correctly" do
+      @board.snapshot
+      @board.move!(0,3,Sowbelly::Constants::WHITE)
+      @board.rollback
+      expect(@board.state[:pieces]).to eq(initial_state)
+    end
+    
     
     
   
